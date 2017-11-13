@@ -14,7 +14,7 @@ CREATE TABLE entrys(
 	title VARCHAR(100),
 	description VARCHAR(1024),
 	image VARCHAR(255),
-	linked_date	TIMESTAMP,
+	assignedtime TIMESTAMP,
 	tags VARCHAR(255),
 	reflection VARCHAR(1024),
 	location_id INT REFERENCES locations(id)

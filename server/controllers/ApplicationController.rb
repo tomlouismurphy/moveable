@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
 
 	require 'sinatra/cross_origin'
 
-	ActiveRecord:Base.establish_connection(
+	ActiveRecord::Base.establish_connection(
 		:adapter => 'postgresql',
 		:database => 'tasklist'
 	)
