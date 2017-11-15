@@ -7,12 +7,14 @@ class ApplicationController < Sinatra::Base
 
 	ActiveRecord::Base.establish_connection(
 		:adapter => 'postgresql',
-		:database => 'tasklist'
+		:database => 'moveable'
 	)
 
 	set :bind, '0.0.0.0'
 
 	use Rack::MethodOverride
+
+	register Sinatra::CrossOrigin
 
 	configure do
 		enable :cross_origin
@@ -20,10 +22,6 @@ class ApplicationController < Sinatra::Base
 
 	set :allow_credentials, true
 	set :allow_methods, [:get, :post, :options]
-
-	before do
-		response.headers['Access-Control-Allow-Origin'] = '*'
-	end
 
 	options '*' do
 		response.headers["Access-Control-Allow-Methods"] = "HEAD,GET,POST,PUT,PATCH,DELETE,OPTIONS"
@@ -34,10 +32,10 @@ class ApplicationController < Sinatra::Base
 
 	set :protection, false
 
-	set :views, File.dirname(__FILE__) + '/../views'
+	set :views, File.expand_path('/../views',__FILE__)
 
 	get '/' do
-		"Hello World"
+		"Hello Worlds"
 	end
 
 end

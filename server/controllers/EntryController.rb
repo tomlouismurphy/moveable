@@ -1,11 +1,13 @@
 class EntryController < ApplicationController
 
 	get '/' do
+		response['Access-Control-Allow-Origin'] = '*'
 		@entrys = Entry.all
 		@entrys.to_json
 	end
 
 	post '/' do
+		response['Access-Control-Allow-Origin'] = '*'
 		@entry = Entry.new
 		@entry.title = params[:title]
 		@entry.description = params[:description]
@@ -19,6 +21,7 @@ class EntryController < ApplicationController
 	end
 
 	put '/:id' do
+		response['Access-Control-Allow-Origin'] = '*'
 		payload = params
 		payload = JSON.parse(request.body.read).symbolize_keys
 		@entry = Entry.find_by(id: payload[:id])
@@ -34,6 +37,7 @@ class EntryController < ApplicationController
 	end
 
 	delete '/:id' do
+		response['Access-Control-Allow-Origin'] = '*'
 		payload = params
 		payload = JSON.parse(request.body.read).symbolize_keys
 		@entry = Entry.find_by(id: payload[:id])

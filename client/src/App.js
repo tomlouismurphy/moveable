@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GoogleMap from 'google-map-react';
 import {SelectedEntry} from './SelectedEntry/SelectedEntry.js';
-import {Locations} from './Locations/Locations.js'
+const google = window.google;
 
 class App extends Component {
 	constructor() {
@@ -10,20 +10,43 @@ class App extends Component {
 		this.state = {
 			center: {lat: 41.8781, lng: -87.6298},
 			zoom: 10,
-			entrySelected: true,
-			locations: [
-				{
-					lat: 41.9484,
-					lng: -87.6553,
-					text: 'Wrigley Field'
-				},
-				{
-					lat: 41.8299,
-					lng: -87.6338,
-					text: 'Guaranteed Rate Field'
-				}
-			]
+			entrySelected: false,
+			assignNewLocation: false,
+			locations: []
 		}
+	}
+	componentDidMount(){
+		fetch('http://localhost:9292/locations')
+		.then(response => response.json())
+		.then(locations => {
+			const state = this.state;
+			for (let i = 0; i < locations.length; i++){
+				state.locations.push(locations[i]);
+			}
+			this.setState(state);
+		})
+		.catch(err => console.log(err))
+	}
+	addNewLocation = (location) => {
+		fetch('http://localhost:9292/locations', {
+			method: 'post',
+			body: JSON.stringify(location)
+		})
+		.then(
+			fetch('http://localhost:9292/locations')
+			.then(response => response.json())
+			.then(locations => {
+				const state = this.state;
+				for (let i = 0; i < locations.length; i++){
+					state.locations.push(locations[i]);
+				}
+				this.setState(state);
+			}))
+	}
+	grabLocation = () => {
+		google.maps.event.addListener('click', (e) => {
+			console.log(e.latLng);
+		})
 	}
 	selectMemory = (e) => {
 		const state = this.state;
@@ -32,14 +55,15 @@ class App extends Component {
 	}
 	renderMarkers(map, maps) {
 		for (let i = 0; i < this.state.locations.length; i++){
-			let marker = new maps.Marker({
-				position: {lat: this.state.locations[i].lat, lng: this.state.locations[i].lng},
+			const marker = new maps.Marker({
+				position: {lat: this.state.locations[i].latitude, lng: this.state.locations[i].longitude},
 				map,
-				title: this.state.locations[i].text
+				title: this.state.locations[i].name
 			});
 		}
 	}
 	render() {
+		console.log(google);
 		const style = {
 			width: '400px',
 			height: '400px'
@@ -55,6 +79,7 @@ class App extends Component {
 				defaultCenter={this.state.center}
 				defaultZoom={this.state.zoom}
 				onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+				onClick={this.grabLocation}
 				>
 					<div id="container">
 						<div id="main-title">
@@ -62,7 +87,6 @@ class App extends Component {
 							<p onClick={this.selectMemory}>TEST</p>
 						</div>
 						{this.state.entrySelected ? <SelectedEntry/> : ''}
-						<Locations lat={41.9484} lng={-87.6553} text={'A'}/>
 					</div>	
 				</GoogleMap>
 			</div>
