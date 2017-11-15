@@ -8,7 +8,6 @@ class App extends Component {
 		super();
 		this.state = {
 			locations: [],
-			selectedLocation: ''
 		}
 	}
 	componentDidMount(){
@@ -47,10 +46,10 @@ class App extends Component {
 				</div>
 				<div className="row">
 					<div className="col s6">
-						<MainMap locations={this.state.locations} selectedLocation={this.state.selectedLocation}/>
+						<MainMap locations={this.state.locations} />
 					</div>
 					<div className="col s6">
-						<IntroGraphic />
+						<IntroGraphic locations={this.state.locations} />
 					</div>
 				</div>
 			</div>

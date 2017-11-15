@@ -13,11 +13,12 @@ export class NewLocation extends Component {
 	render() {
 		return(
 			<div id='newlocation-container'>
+				<h4>Test</h4>
 				<form>
 					<input type='text' name='name'/><br/>
 					<input type='text' name='latitude'/><br/>
 					<input type='text' name='longitude'/><br/>
-					<button></button>
+					<button>Create</button>
 				</form>
 			</div>
 		)
