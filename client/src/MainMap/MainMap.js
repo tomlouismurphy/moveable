@@ -28,6 +28,7 @@ export class MainMap extends Component {
 		this.setState(state);
 	}
 	renderMarkers = (map, maps) => {
+		console.log(map, maps)
 		for (let i = 0; i < this.state.locations.length; i++){
 			const marker = new maps.Marker({
 				position: {lat: this.state.locations[i].latitude, lng: this.state.locations[i].longitude},
@@ -38,7 +39,7 @@ export class MainMap extends Component {
 	}
 	placeMarker = (e) => {
 		if (this.state.enableMarker === true){
-			//ensures that a marker is not placed on the map behind the "ADD NEW MARKER" div
+			//ensures that a marker is not placed on the map behind the "ADD NEW MARKER" div when someone clicks that div
 			if (this.state.justEnabled === true){
 				const state = this.state;
 				state.justEnabled = false;

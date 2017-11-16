@@ -39,7 +39,7 @@ export class IntroGraphic extends Component {
 				{this.state.mainBlurb ?
 					<div>
 						<p>This is the intro page.</p>
-						<button onClick={this.switchToLocation}>View Location</button><br/>
+						<button onClick={this.switchToLocation}>View Locations</button><br/>
 						<button onClick={this.switchToNewLocation}>Create New Location</button>
 					</div>
 				:	
@@ -55,7 +55,7 @@ export class IntroGraphic extends Component {
 				}
 				{this.state.newLocationScreen ?
 					<div>
-						<NewLocation/>
+						<NewLocation addNewLocation={this.props.addNewLocation}/>
 						<button onClick={this.switchToMain}>Return</button>
 					</div>
 				:

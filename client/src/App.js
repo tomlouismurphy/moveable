@@ -35,20 +35,15 @@ class App extends Component {
 		.catch(err => console.log(err));
 	}
 	addNewLocation = (location) => {
+		console.log(typeof(location.name));
+		console.log(typeof(location.latitude));
+		console.log(typeof(location.longitude));
+		console.log(location);
+		console.log(JSON.stringify(location));
 		fetch('http://localhost:9292/locations', {
 			method: 'post',
 			body: JSON.stringify(location)
 		})
-		.then(
-			fetch('http://localhost:9292/locations')
-			.then(response => response.json())
-			.then(locations => {
-				const state = this.state;
-				for (let i = 0; i < locations.length; i++){
-					state.locations.push(locations[i]);
-				}
-				this.setState(state);
-			}))
 	}
 	render() {
 		return(
@@ -61,7 +56,7 @@ class App extends Component {
 						<MainMap locations={this.state.locations} />
 					</div>
 					<div id="background" className="col s6">
-						<IntroGraphic locations={this.state.locations} entrys={this.state.entrys} />
+						<IntroGraphic locations={this.state.locations} entrys={this.state.entrys} addNewLocation={this.addNewLocation} />
 					</div>
 				</div>
 			</div>
