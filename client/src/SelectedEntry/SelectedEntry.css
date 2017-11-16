@@ -3,12 +3,12 @@
 	background-color: rgba(150, 50, 0, 1);
 }
 
-#memory-image {
+#stock-memory-image {
 	height: 200px;
 	width: 200px;
 	float: right;
 }
 
-#memory-timestamp {
+#stock-memory-timestamp {
 	clear: both;
 }

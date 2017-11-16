@@ -8,6 +8,7 @@ class App extends Component {
 		super();
 		this.state = {
 			locations: [],
+			entrys: []
 		}
 	}
 	componentDidMount(){
@@ -20,7 +21,18 @@ class App extends Component {
 			}
 			this.setState(state);
 		})
-		.catch(err => console.log(err))
+		.catch(err => console.log(err));
+		fetch('http://localhost:9292/entrys')
+		.then(response => response.json())
+		.then(entrys => {
+			const state = this.state;
+			for (let i = 0; i < entrys.length; i++){
+				state.entrys.push(entrys[i]);
+			}
+			this.setState(state);
+			console.log(this.state);
+		})
+		.catch(err => console.log(err));
 	}
 	addNewLocation = (location) => {
 		fetch('http://localhost:9292/locations', {
@@ -49,7 +61,7 @@ class App extends Component {
 						<MainMap locations={this.state.locations} />
 					</div>
 					<div className="col s6">
-						<IntroGraphic locations={this.state.locations} />
+						<IntroGraphic locations={this.state.locations} entrys={this.state.entrys} />
 					</div>
 				</div>
 			</div>

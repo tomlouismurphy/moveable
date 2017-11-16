@@ -47,7 +47,7 @@ export class IntroGraphic extends Component {
 				}
 				{this.state.locationSelected ?
 					<div>
-						<SelectedLocation locations={this.props.locations} />
+						<SelectedLocation locations={this.props.locations} entrys={this.props.entrys} />
 						<button onClick={this.switchToMain}>Return</button>
 					</div>
 				:	

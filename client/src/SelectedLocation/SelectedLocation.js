@@ -7,6 +7,7 @@ export class SelectedLocation extends Component {
 		super(props);
 		this.state = {
 			locations: this.props.locations,
+			entrys: this.props.entrys,
 			selectedLocation: 'N/A'
 		}
 	}
@@ -27,7 +28,7 @@ export class SelectedLocation extends Component {
 					<ul className="keystones-list">
 						{locationList}
 					</ul>
-				<SelectedEntry selectedLocation={this.state.selectedLocation}/>
+				<SelectedEntry locations={this.state.locations} entrys={this.state.entrys} selectedLocation={this.state.selectedLocation}/>
 			</div>
 		)
 	}
