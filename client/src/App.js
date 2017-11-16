@@ -60,7 +60,7 @@ class App extends Component {
 					<div className="col s6">
 						<MainMap locations={this.state.locations} />
 					</div>
-					<div className="col s6">
+					<div id="background" className="col s6">
 						<IntroGraphic locations={this.state.locations} entrys={this.state.entrys} />
 					</div>
 				</div>

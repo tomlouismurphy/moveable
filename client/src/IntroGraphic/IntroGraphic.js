@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './IntroGraphic.css';
-import {SelectedLocation} from '../SelectedLocation/SelectedLocation.js';
+import {Locations} from '../Locations/Locations.js';
 import {NewLocation} from '../NewLocation/NewLocation.js';
 
 export class IntroGraphic extends Component {
@@ -39,15 +39,15 @@ export class IntroGraphic extends Component {
 				{this.state.mainBlurb ?
 					<div>
 						<p>This is the intro page.</p>
-						<button onClick={this.switchToLocation}>View Keystone</button><br/>
-						<button onClick={this.switchToNewLocation}>Found New Keystone</button>
+						<button onClick={this.switchToLocation}>View Location</button><br/>
+						<button onClick={this.switchToNewLocation}>Create New Location</button>
 					</div>
 				:	
 					''
 				}
 				{this.state.locationSelected ?
 					<div>
-						<SelectedLocation locations={this.props.locations} entrys={this.props.entrys} />
+						<Locations locations={this.props.locations} entrys={this.props.entrys} />
 						<button onClick={this.switchToMain}>Return</button>
 					</div>
 				:	

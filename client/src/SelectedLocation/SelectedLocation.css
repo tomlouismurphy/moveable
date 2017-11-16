@@ -1,7 +1,18 @@
-#location-title {
-	text-align: center;
+#entry-container {
+	width: 100%;
+	background-color: rgba(150, 50, 0, 1);
 }
 
-.keystones-list {
-	text-align: center;
+.entry-title {
+	color: #00BBEE;
+}
+
+#stock-memory-image {
+	height: 200px;
+	width: 200px;
+	float: right;
+}
+
+#stock-memory-timestamp {
+	clear: both;
 }

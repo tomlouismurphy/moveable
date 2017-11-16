@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './MainMap.css';
 import GoogleMap from 'google-map-react';
-import {SelectedLocation} from '../SelectedLocation/SelectedLocation.js';
 const google = window.google;
 
 export class MainMap extends Component {
