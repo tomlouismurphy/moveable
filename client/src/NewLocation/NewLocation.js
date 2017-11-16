@@ -15,9 +15,9 @@ export class NewLocation extends Component {
 			<div id='newlocation-container'>
 				<h4>Test</h4>
 				<form>
-					<input type='text' name='name'/><br/>
-					<input type='text' name='latitude'/><br/>
-					<input type='text' name='longitude'/><br/>
+					Name: <input className='input-location' type='text' name='name'/><br/>
+					Latitude: <input className='input-location' type='text' name='latitude'/><br/>
+					Longitude: <input className='input-location' type='text' name='longitude'/><br/>
 					<button>Create</button>
 				</form>
 			</div>
