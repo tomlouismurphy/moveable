@@ -19,10 +19,7 @@ export class NewLocation extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const newLocation = this.state;
-		newLocation.latitude = parseFloat(newLocation.latitude);
-		newLocation.longitude = parseFloat(newLocation.longitude);
-		console.log(newLocation.name);
-		this.props.addNewLocation({name: newLocation.name, latitude: newLocation.latitude, longitude: newLocation.longitude});
+		this.props.addNewLocation(newLocation);
 	}
 	render() {
 		return(
