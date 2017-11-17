@@ -9,7 +9,7 @@ export class MainMap extends Component {
 		super(props);
 		this.state = {
 			center: {lat: 41.8781, lng: -87.6298},
-			zoom: 10,
+			zoom: 4,
 			enableMarker: false,
 			assignNewLocation: false,
 			justEnabled: false,
@@ -34,10 +34,15 @@ export class MainMap extends Component {
 		for (let i = 0; i < this.state.locations.length; i++){
 			const marker = new maps.Marker({
 				position: {lat: this.state.locations[i].latitude, lng: this.state.locations[i].longitude},
-				map,
-				title: this.state.locations[i].name
+				map: map,
+				animation: google.maps.Animation.DROP,
+				title: this.state.locations[i].name,
+				latitude: this.state.locations[i].latitude,
+				longitude: this.state.locations[i].longitude
 			});
 			marker.addListener('click', function() {
+				map.panTo(marker.getPosition());
+				map.setZoom(14);
 				markerTitles.push(marker.title);
 				console.log(markerTitles);
 				console.log(this.state);

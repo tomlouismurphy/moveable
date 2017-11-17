@@ -12,3 +12,10 @@
 #memory-timestamp {
 	clear: both;
 }
+
+@media (max-width: 650px) {
+	#memory-image {
+		height: 125px;
+		width: 125px;
+	}
+}

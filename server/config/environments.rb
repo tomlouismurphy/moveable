@@ -9,3 +9,5 @@ configure :production, :development do
 		:database => db.path[1..-1],
 		:encoding => 'utf8'
 	)
+
+end
