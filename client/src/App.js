@@ -35,6 +35,29 @@ class App extends Component {
 		})
 		.catch(err => console.log(err));
 	}
+	getAllDatabase = () => {
+		fetch('http://localhost:9292/locations')
+		.then(response => response.json())
+		.then(locations => {
+			const state = this.state;
+			for (let i = 0; i < locations.length; i++){
+				state.locations.push(locations[i]);
+			}
+			this.setState(state);
+		})
+		.catch(err => console.log(err));
+		fetch('http://localhost:9292/entrys')
+		.then(response => response.json())
+		.then(entrys => {
+			const state = this.state;
+			for (let i = 0; i < entrys.length; i++){
+				state.entrys.push(entrys[i]);
+			}
+			this.setState(state);
+			console.log(this.state);
+		})
+		.catch(err => console.log(err));
+	}
 	addNewLocation = (location) => {
 		fetch('http://localhost:9292/locations', {
 			method: 'post',
