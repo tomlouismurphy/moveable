@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {MainMap} from './MainMap/MainMap.js';
 import {IntroGraphic} from './IntroGraphic/IntroGraphic.js';
+const request = require('superagent');
 
 class App extends Component {
 	constructor() {
@@ -35,15 +36,34 @@ class App extends Component {
 		.catch(err => console.log(err));
 	}
 	addNewLocation = (location) => {
-		console.log(typeof(location.name));
-		console.log(typeof(location.latitude));
-		console.log(typeof(location.longitude));
-		console.log(location);
-		console.log(JSON.stringify(location));
-		fetch('http://localhost:9292/locations', {
-			method: 'post',
-			body: JSON.stringify(location)
-		})
+		console.log(location.name);
+		request.post('http://localhost:9292/locations')
+		.send({name: location.name, latitude: location.latitude, longitude: location.longitude})
+		.set('accept', 'json')
+		.end((err, res) => {
+			if (err){
+				console.log(err);
+			} else {
+				console.log(res);
+			}
+		});
+		//test
+		// console.log(typeof(location.name));
+		// console.log(typeof(location.latitude));
+		// console.log(typeof(location.longitude));
+		// console.log(location);
+		// console.log(JSON.stringify(location));
+		// fetch('http://localhost:9292/locations', {
+		// 	method: 'post',
+		// 	headers: {
+		// 		'Content-Type': 'application/x-www-form-urlencoded'
+		// 	},
+		// 	body: JSON.stringify([
+		// 		{name: location.name},
+		// 		{latitude: location.latitude},
+		// 		{longitude: location.longitude}
+		// 	]),
+		// })
 	}
 	render() {
 		return(

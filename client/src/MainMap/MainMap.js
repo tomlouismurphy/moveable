@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './MainMap.css';
 import GoogleMap from 'google-map-react';
 const google = window.google;
+const markerTitles = [];
 
 export class MainMap extends Component {
 	constructor(props) {
@@ -12,7 +13,8 @@ export class MainMap extends Component {
 			enableMarker: false,
 			assignNewLocation: false,
 			justEnabled: false,
-			locations: this.props.locations
+			locations: this.props.locations,
+			markerSelected: ''
 		}
 	}
 	grabLocation = () => {
@@ -35,6 +37,10 @@ export class MainMap extends Component {
 				map,
 				title: this.state.locations[i].name
 			});
+			marker.addListener('click', function() {
+				markerTitles.push(marker.title);
+				console.log(markerTitles);
+			})
 		}
 	}
 	placeMarker = (e) => {
@@ -57,8 +63,11 @@ export class MainMap extends Component {
 		}
 	}
 	render() {
+		const test = markerTitles[markerTitles.length - 1]
+		console.log(test);
 		return(
 			<div style={{height: "600px", width: "100%"}}>
+				<h3>Test</h3>
 				<GoogleMap
 				resetBoundsOnResize = {true}
 				bootstrapURLKeys={{
