@@ -5,10 +5,7 @@ class ApplicationController < Sinatra::Base
 
 	require 'sinatra/cross_origin'
 
-	ActiveRecord::Base.establish_connection(
-		:adapter => 'postgresql',
-		:database => 'moveable'
-	)
+	require './config/environments'
 
 	set :bind, '0.0.0.0'
 
