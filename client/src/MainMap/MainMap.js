@@ -40,6 +40,7 @@ export class MainMap extends Component {
 			marker.addListener('click', function() {
 				markerTitles.push(marker.title);
 				console.log(markerTitles);
+				console.log(this.state);
 			})
 		}
 	}
