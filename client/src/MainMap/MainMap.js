@@ -14,7 +14,7 @@ export class MainMap extends Component {
 			assignNewLocation: false,
 			justEnabled: false,
 			locations: this.props.locations,
-			markerSelected: ''
+			markerSelected: false
 		}
 	}
 	grabLocation = () => {
@@ -67,7 +67,6 @@ export class MainMap extends Component {
 		console.log(test);
 		return(
 			<div style={{height: "600px", width: "100%"}}>
-				<h3>Test</h3>
 				<GoogleMap
 				resetBoundsOnResize = {true}
 				bootstrapURLKeys={{

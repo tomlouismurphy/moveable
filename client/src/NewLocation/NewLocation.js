@@ -28,7 +28,7 @@ export class NewLocation extends Component {
 		return(
 			<div id='newlocation-container'>
 				<h4>Test</h4>
-				<form>
+				<form id='form-location'>
 					Name: <input className='input-location' type='text' name='name' onChange={this.handleInput}/><br/>
 					Latitude: <input className='input-location' type='text' name='latitude' onChange={this.handleInput}/><br/>
 					Longitude: <input className='input-location' type='text' name='longitude' onChange={this.handleInput}/><br/>

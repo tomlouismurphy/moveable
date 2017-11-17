@@ -1,7 +1,6 @@
 body {
-	background-image: url('./images/kinggeorgemap.png');
-	background-size: contain;
+	background-color: #566277;
 	margin: 0;
   	padding: 0;
-  	font-family: sans-serif;
+  	font-family: 'Cabin', sans-serif;
 }

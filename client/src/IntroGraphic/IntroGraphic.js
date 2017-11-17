@@ -35,7 +35,7 @@ export class IntroGraphic extends Component {
 	}
 	render() {
 		return(
-			<div>
+			<div id="right-background">
 				{this.state.mainBlurb ?
 					<div>
 						<p>This is the intro page.</p>

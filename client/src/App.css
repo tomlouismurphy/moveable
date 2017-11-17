@@ -1,14 +1,19 @@
 #background {
-	background-color: gray;
+	background-color: #BCC6CC;
+	border-radius: 5px;
+	padding-right: 10px;
 }
 
 #main-title {
   text-align: center;
   margin-bottom: 5px;
+  margin-top: 5px;
+  font-family: 'Vollkorn SC', serif;
 }
 
 #text-title {
   display: inline;
-  background-color: orange;
+  background-color: rgba(140, 0, 40, 0.5);
   font-size: 40px;
+  border-radius: 10px;
 }

@@ -8,7 +8,7 @@ export class Locations extends Component {
 		this.state = {
 			locations: this.props.locations,
 			entrys: this.props.entrys,
-			selectedLocation: 'N/A',
+			selectedLocation: '',
 			locationSelected: false
 		}
 	}
