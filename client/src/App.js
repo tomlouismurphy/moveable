@@ -9,7 +9,8 @@ class App extends Component {
 		super();
 		this.state = {
 			locations: [],
-			entrys: []
+			entrys: [],
+			clickedLocation: ''
 		}
 	}
 	componentDidMount(){
@@ -71,6 +72,12 @@ class App extends Component {
 			]),
 		})
 	}
+	clickLocation = (location) => {
+		console.log('running');
+		const state = this.state;
+		state.clickedLocation = location;
+		this.setState(state);
+	}
 	render() {
 		return(
 			<div>
@@ -79,7 +86,8 @@ class App extends Component {
 				</div>
 				<div className="row">
 					<div className="col s6">
-						<MainMap locations={this.state.locations} />
+						<h4>{this.state.clickedLocation}</h4>
+						<MainMap locations={this.state.locations} clickLocation={this.clickLocation} />
 					</div>
 					<div id="background" className="col s6">
 						<IntroGraphic locations={this.state.locations} entrys={this.state.entrys} addNewLocation={this.addNewLocation} />

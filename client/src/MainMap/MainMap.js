@@ -18,8 +18,8 @@ export class MainMap extends Component {
 		}
 	}
 	grabLocation = () => {
-		google.maps.event.addListener('click', (e) => {
-			console.log(e.latLng);
+		google.maps.event.addListener('click', () => {
+			console.log('hm');
 		})
 	}
 	allowMarker = (e) => {
@@ -40,12 +40,12 @@ export class MainMap extends Component {
 				latitude: this.state.locations[i].latitude,
 				longitude: this.state.locations[i].longitude
 			});
-			marker.addListener('click', function() {
+			marker.addListener('click', () => {
+				console.log(this.props);
 				map.panTo(marker.getPosition());
 				map.setZoom(14);
-				markerTitles.push(marker.title);
-				console.log(markerTitles);
-				console.log(this.state);
+				const location = marker.title;
+				this.props.clickLocation(location);
 			})
 		}
 	}
@@ -69,8 +69,6 @@ export class MainMap extends Component {
 		}
 	}
 	render() {
-		const test = markerTitles[markerTitles.length - 1]
-		console.log(test);
 		return(
 			<div style={{height: "600px", width: "100%"}}>
 				<GoogleMap
