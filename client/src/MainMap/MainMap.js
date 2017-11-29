@@ -17,11 +17,6 @@ export class MainMap extends Component {
 			markerSelected: false
 		}
 	}
-	grabLocation = () => {
-		google.maps.event.addListener('click', () => {
-			console.log('hm');
-		})
-	}
 	allowMarker = (e) => {
 		console.log(e.currentTarget.innerHTML);
 		const state = this.state;
@@ -30,6 +25,7 @@ export class MainMap extends Component {
 		this.setState(state);
 	}
 	renderMarkers = (map, maps) => {
+		console.log(maps.LatLng);
 		console.log(map, maps)
 		for (let i = 0; i < this.state.locations.length; i++){
 			const marker = new maps.Marker({
@@ -75,6 +71,7 @@ export class MainMap extends Component {
 				resetBoundsOnResize = {true}
 				bootstrapURLKeys={{
 					key: 'AIzaSyBERkSwB1_8brGNdcq4kAH-Jbw5P527Kkc',
+					libraries: 'geometry',
 					language: 'en'
 				}}
 				defaultCenter={this.state.center}
