@@ -49,7 +49,9 @@ export class SelectedEntry extends Component {
 		for (let i = 0; i < this.state.entrys.length; i++){
 			if (this.state.entrys[i].title === this.state.displayedEntry){
 				entryForPage = this.state.entrys[i];
-				entryForPage.assignedtime = this.convertToDate(entryForPage.assignedtime);
+				if (entryForPage.assignedtime.length === 24){
+					entryForPage.assignedtime = this.convertToDate(entryForPage.assignedtime);
+				}
 			}
 		} 
 		return(
