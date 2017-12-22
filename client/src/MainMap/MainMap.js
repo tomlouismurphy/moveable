@@ -39,7 +39,7 @@ export class MainMap extends Component {
 			marker.addListener('click', () => {
 				console.log(this.props);
 				map.panTo(marker.getPosition());
-				map.setZoom(14);
+				map.setZoom(13);
 				const location = marker.title;
 				this.props.clickLocation(location);
 			})
@@ -66,7 +66,7 @@ export class MainMap extends Component {
 	}
 	render() {
 		return(
-			<div style={{height: "600px", width: "100%"}}>
+			<div style={{height: "700px", width: "100%"}}>
 				<GoogleMap
 				resetBoundsOnResize = {true}
 				bootstrapURLKeys={{
