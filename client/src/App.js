@@ -73,7 +73,6 @@ class App extends Component {
 		})
 	}
 	clickLocation = (location) => {
-		console.log('running');
 		const state = this.state;
 		state.clickedLocation = location;
 		this.setState(state);
