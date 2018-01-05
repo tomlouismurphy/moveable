@@ -12,6 +12,8 @@ export class IntroGraphic extends Component {
 			newLocationScreen: false
 		}
 	}
+	//this is hooked up to onClick functions to return
+	//to a sort of home screen for the entries half
 	switchToMain = () => {
 		const state = this.state;
 		state.locationSelected = false;
@@ -19,6 +21,8 @@ export class IntroGraphic extends Component {
 		state.mainBlurb = true;
 		this.setState(state);
 	}
+	//onClick, pulls up the list of all locations
+	//that have been entered into the locations table
 	switchToLocation = () => {
 		const state = this.state;
 		state.mainBlurb = false;
@@ -26,6 +30,8 @@ export class IntroGraphic extends Component {
 		state.locationSelected = true;
 		this.setState(state);
 	}
+	//switches from the home screen to a new view
+	//where user can add a new location
 	switchToNewLocation = () => {
 		const state = this.state;
 		state.mainBlurb = false;

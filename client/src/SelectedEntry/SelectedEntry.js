@@ -10,9 +10,8 @@ export class SelectedEntry extends Component {
 			entrys: this.props.entrys
 		}
 	}
-	checkState = () => {
-		console.log(this.state);
-	}
+	//converts timestamps in SQL so that they are
+	//displayed in U.S. MM/DD/YYYY format
 	convertToDate = (timestamp) => {
 		const dayOfYear = timestamp.split('T');
 		const dayArray = dayOfYear[0].split('-');
@@ -46,6 +45,8 @@ export class SelectedEntry extends Component {
 	}
 	render() {
 		let entryForPage = '';
+		//combs through timestamp data in SQL and 
+		//renders date in U.S. format from that data
 		for (let i = 0; i < this.state.entrys.length; i++){
 			if (this.state.entrys[i].title === this.state.displayedEntry){
 				entryForPage = this.state.entrys[i];

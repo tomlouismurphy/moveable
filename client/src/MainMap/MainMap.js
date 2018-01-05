@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './MainMap.css';
 import GoogleMap from 'google-map-react';
+
+//below two variables allow the use of google map api
+//features within the component
 const google = window.google;
 const markerTitles = [];
 
@@ -17,6 +20,9 @@ export class MainMap extends Component {
 			markerSelected: false
 		}
 	}
+	//after clicking the add new marker box at top left
+	//allows the user to add a new marker by clicking
+	//on map
 	allowMarker = (e) => {
 		console.log(e.currentTarget.innerHTML);
 		const state = this.state;
@@ -24,9 +30,13 @@ export class MainMap extends Component {
 		state.justEnabled = true;
 		this.setState(state);
 	}
+	//upon load, this function is called to render
+	//the googleMap with relevant data from SQL tables
 	renderMarkers = (map, maps) => {
 		console.log(maps.LatLng);
 		console.log(map, maps)
+		//generates a new marker on map for each
+		//location on the relevant SQL table
 		for (let i = 0; i < this.state.locations.length; i++){
 			const marker = new maps.Marker({
 				position: {lat: this.state.locations[i].latitude, lng: this.state.locations[i].longitude},
@@ -36,6 +46,8 @@ export class MainMap extends Component {
 				latitude: this.state.locations[i].latitude,
 				longitude: this.state.locations[i].longitude
 			});
+			//when each marker is clicked, zooms to position
+			//and then adds a title above map on top left
 			marker.addListener('click', () => {
 				console.log(this.props);
 				map.panTo(marker.getPosition());

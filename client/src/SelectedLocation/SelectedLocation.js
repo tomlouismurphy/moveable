@@ -26,6 +26,8 @@ export class SelectedLocation extends Component {
 	}
 	//checks to see if a chosen location has entries
 	populateEntrys = () => {
+		//loops through all locations in journal's
+		//SQL table to verify which is selected
 		for (let i = 0; i < this.state.locations.length; i++){
 			if (this.state.locations[i].name === this.state.selectedLocation){
 				const state = this.state;
@@ -33,6 +35,8 @@ export class SelectedLocation extends Component {
 				this.setState(state);
 			}
 		}
+		//runs a check on selected location
+		//to see if there are any entries indexed to it
 		let ticker = 0;
 		for (let i = 0; i < this.state.entrys.length; i++){
 			if (this.state.entrys[i].location_id === this.state.parentLocationId){
@@ -51,8 +55,9 @@ export class SelectedLocation extends Component {
 			this.setState(state);
 		}
 	}
+	//on clicking on a link to an entry, moves to display
+	//that entry's text and details on screen
 	assignEntry = (e) => {
-		console.log(e.currentTarget.innerHTML);
 		const state = this.state;
 		state.selectedEntry = e.currentTarget.innerHTML;
 		state.entrySelected = true;

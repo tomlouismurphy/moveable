@@ -12,8 +12,9 @@ export class Locations extends Component {
 			locationSelected: false
 		}
 	}
+	//after a location is clicked, the below
+	//opens a view that shows all its contained entries
 	assignLocation = (e) => {
-		console.log(e.currentTarget.innerHTML);
 		const state = this.state;
 		state.selectedLocation = e.currentTarget.innerHTML;
 		this.setState(state);
