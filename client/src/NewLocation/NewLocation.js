@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './NewLocation.css';
 
 export class NewLocation extends Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
 			name: '',
 			latitude: '',
@@ -19,6 +19,8 @@ export class NewLocation extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const newLocation = this.state;
+		console.log(newLocation);
+		console.log(this.props.locations);
 		this.props.addNewLocation(newLocation);
 	}
 	render() {

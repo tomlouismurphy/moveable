@@ -61,7 +61,7 @@ export class IntroGraphic extends Component {
 				}
 				{this.state.newLocationScreen ?
 					<div>
-						<NewLocation addNewLocation={this.props.addNewLocation}/>
+						<NewLocation locations={this.props.locations} addNewLocation={this.props.addNewLocation}/>
 						<button onClick={this.switchToMain}>Return</button>
 					</div>
 				:
