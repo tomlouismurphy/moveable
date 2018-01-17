@@ -60,17 +60,17 @@ class App extends Component {
 		.catch(err => console.log(err));
 	}
 	addNewLocation = (location) => {
-		fetch('http://localhost:9292/locations', {
-			method: 'post',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			body: JSON.stringify([
-				{name: location.name},
-				{latitude: location.latitude},
-				{longitude: location.longitude}
-			]),
-		})
+		console.log(location);
+		request
+			.post('http://localhost:9292/locations')
+			.send({ name: location.name, latitude: location.latitude, longitude: location.longitude })
+			.end((err, res) => {
+				console.log(res.req._data);
+				const state = this.state;
+				state.locations.push(res.req._data);
+				this.setState(state);
+				console.log(this.state.locations);
+			});
 	}
 	clickLocation = (location) => {
 		const state = this.state;

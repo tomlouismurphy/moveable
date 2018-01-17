@@ -33,8 +33,6 @@ export class MainMap extends Component {
 	//upon load, this function is called to render
 	//the googleMap with relevant data from SQL tables
 	renderMarkers = (map, maps) => {
-		console.log(maps.LatLng);
-		console.log(map, maps)
 		//generates a new marker on map for each
 		//location on the relevant SQL table
 		for (let i = 0; i < this.state.locations.length; i++){

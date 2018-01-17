@@ -10,7 +10,7 @@
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17",
-    "superagent": "^3.8.1"
+    "superagent": "^3.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
