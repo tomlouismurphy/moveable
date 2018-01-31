@@ -8,10 +8,12 @@ class LocationController < ApplicationController
 
 	post '/' do
 		response['Access-Control-Allow-Origin'] = '*'
+		request.body.rewind
+		request_payload = JSON.parse(request.body.read)
 		@location = Location.new
-		@location.name = params[:name]
-		@location.latitude = params[:latitude]
-		@location.longitude = params[:longitude]
+		@location.name = request_payload['name']
+		@location.latitude = request_payload['latitude']
+		@location.longitude = request_payload['longitude']
 		@location.save
 		'posted'
 	end
