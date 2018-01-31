@@ -19,6 +19,8 @@ export class NewLocation extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const newLocation = this.state;
+		newLocation.latitude = parseInt(newLocation.latitude);
+		newLocation.longitude = parseInt(newLocation.longitude);
 		console.log(newLocation);
 		console.log(this.props.locations);
 		this.props.addNewLocation(newLocation);

@@ -63,7 +63,7 @@ class App extends Component {
 		console.log(location);
 		request
 			.post('http://localhost:9292/locations')
-			.send({ name: location.name, latitude: location.latitude, longitude: location.longitude })
+			.send({ name: location.name, latitude: parseInt(location.latitude), longitude: parseInt(location.longitude) })
 			.end((err, res) => {
 				console.log(res.req._data);
 				const state = this.state;
